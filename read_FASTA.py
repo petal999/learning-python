@@ -22,8 +22,8 @@ def read_FASTA_split(FASTAfile):
 
 def read_FASTA_protein(FASTAfile):
     '''To end up with a clean two element list of name and sequence '''
-    return [[name, seq.replace('\n','')] for name, ignore, seq in \
-    read_FASTA_split(FASTAfile)]
+    return {name : seq.replace('\n','') for name, ignore, seq in \
+    read_FASTA_split(FASTAfile)}
     
 proteins = read_FASTA_protein('seq.txt')
-pprint(proteins[1])
+print (proteins['prot2'])
