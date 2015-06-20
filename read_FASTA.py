@@ -21,7 +21,7 @@ def read_FASTA_split(FASTAfile):
 #pprint (protein)
 
 def read_FASTA_protein(FASTAfile):
-    return [[seq[0], seq[2].replace('\n','')] for seq in \
+    return [[name, seq.replace('\n','')] for name, ignore, seq in \
     read_FASTA_split(FASTAfile)]
     
 pprint(read_FASTA_protein('seq.txt'))
