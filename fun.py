@@ -10,8 +10,10 @@ def find_site(base_seq, site):
 def cut_seq(base_seq, site, offset=0):
     '''Cuts sequence into two pieces and returns them in a tuple '''
     cut_at = find_site(base_seq, site)
-    assert cut_at >-1, base_seq+' not cut'
-    return base_seq[:cut_at+offset], base_seq[cut_at+offset:]
+    if cut_at >-1:
+        return base_seq[:cut_at+offset], base_seq[cut_at+offset:]
+    else:
+        return base_seq+' not cut'
   
 
 with open('seq.txt', 'rt') as seq:
@@ -19,8 +21,8 @@ with open('seq.txt', 'rt') as seq:
     for line in seq:
         line = line.strip()
         found_site = find_site (line, sys.argv[1])
-        print ('position = {0}'.format(found_site))
-        print (cut_seq(line, sys.argv[1]))
-
+        parts = (cut_seq(line, sys.argv[1]))
+        #print (parts)
+        print ('{1},position={0}, cut seqence ={2}'.format(found_site, line, parts))
         
         
