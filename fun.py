@@ -5,7 +5,6 @@ def find_site(base_seq, site):
 
 with open('seq.txt', 'rt') as seq:
     #print(seq.read())
-    base_seq = seq.read()
-    #print (base_seq)
-
-find_site (base_seq, 'prot')
+    for line in seq:
+        print (line)
+        find_site (line, 'prot1')
