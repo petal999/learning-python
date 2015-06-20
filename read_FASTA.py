@@ -7,18 +7,9 @@ def read_FASTA(FASTAfile):
     with open (FASTAfile) as in_file:
         return (in_file.read().split('>') [1:])
         
-#create a list from the FASTAfile
-#proteins = (read_FASTA('seq.txt'))
-#print (proteins)
-#print (proteins[1])
-
-
 def read_FASTA_split(FASTAfile):
     '''start using comprehension to split fasta entries '''
     return [entry.partition('\n') for entry in read_FASTA(FASTAfile)] 
-
-#protein = read_FASTA_split('seq.txt')
-#pprint (protein)
 
 def read_FASTA_protein(FASTAfile):
     '''To end up with a clean two element list of name and sequence '''
