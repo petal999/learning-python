@@ -3,10 +3,7 @@
 with open('seq.txt','rt') as seq:
     #for line in seq:
      #   print(line)
-    r1 = seq.read(20)
-    print(r1)
-    print(r1.count('g'))
-    r2 = seq.read(20)
-    print(r2)
-    print(r2.count('g'))
-    print(seq.read())
+    full=seq.read()
+    r1=full[0:5]
+    r2=full[20:25]
+    print(r2,r1, sep='\n')
