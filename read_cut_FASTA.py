@@ -21,9 +21,13 @@ def cut_seq(base_seq, site, offset=1):
     else:
         return 'sequence not cut'
  
-def keep_cutting():
-    '''If site is repeated in rest of sequence string keep cutting at site '''
-    pass
+def keep_cutting(base_seq):
+    '''If site is repeated in rest of sequence string keep cutting at site\
+    this is not prefect as some extra cuts too '''
+    if base_seq.find(site) >-1:
+        return [cut_seq(base_seq[n:], site) for n in range(0, len(base_seq), base_seq.find(site))]
+    else:
+        pass
  
     
 proteins = read_FASTA_protein('seq.txt')
@@ -38,7 +42,7 @@ else:
     except IndexError:
         pass
     else:
-        cutting = cut_seq(proteins[prot_name], site)
+        cutting = keep_cutting(proteins[prot_name])
         print (cutting)
 
 
