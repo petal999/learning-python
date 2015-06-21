@@ -13,13 +13,17 @@ def read_FASTA_protein(FASTAfile):
         return {name: sequence.replace('\n','') for name, ignore, sequence in \
         [record.partition('\n') for record in in_file.read().split('>')[1:]]}
 
-def cut_seq(base_seq, site, offset=0):
+def cut_seq(base_seq, site, offset=1):
     '''Cuts sequence into two pieces using argv[2] and returns them in a tuple '''
     cut_at = base_seq.find(site)
     if cut_at >-1:
         return base_seq[:cut_at+offset], base_seq[cut_at+offset:]
     else:
-        return base_seq+' not cut'
+        return 'sequence not cut'
+ 
+def keep_cutting():
+    '''If site is repeated in rest of sequence string keep cutting at site '''
+    pass
  
     
 proteins = read_FASTA_protein('seq.txt')
